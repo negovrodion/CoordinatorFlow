@@ -29,8 +29,6 @@ public final class ApplicationCoordinator: Coordinator {
         super.start()
     }
     
-    var nc: UINavigationController?
-    
     public override func loadCoordinator(with type: CoordinatorType) {
         super.loadCoordinator(with: type)
 
