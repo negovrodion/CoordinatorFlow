@@ -79,14 +79,9 @@ public class Coordinator: AbstractCoordinator {
         // Create & setup Coordinator
         
         let coordinator: AbstractCoordinator
-        if let presentPolicy = descr.presentPolicy {
-            var nController = navController
-            if let presenterNavigationController = presentPolicy.navigationController {
-                nController = presenterNavigationController
-            }
-            
+        if let presentPolicy = descr.presentPolicy {            
             coordinator                = ModulesCoordinator(presentPolicy: presentPolicy,
-                                                            navigationController: nController)
+                                                            navigationController: navController)
             coordinator.storyboardName = presentPolicy.storyboardName
         } else if let coord = childCoordinators[descr.description.type] {
             coord.coordinator.navigationController = navController
