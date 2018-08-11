@@ -30,6 +30,8 @@ public struct PresentPolicy {
     /// VC identity from storyboard. If nil load as initial view controller.
     public var vcName: String?
     
+    public var navigationController: UINavigationController?
+    
     /// Load and set all module dependencies here.
     public var startAction: (() -> (UIViewController?))
     
@@ -40,6 +42,14 @@ public struct PresentPolicy {
         self.presentStyle                           = presentStyle
         self.loadNavigationControllerFromStoryboard = loadNavigationControllerFromStoryboard
         self.vcName                                 = vcName
+        self.startAction                            = startAction
+    }
+    
+    public init(navigationController: UINavigationController, startAction: @escaping (() -> (UIViewController?))) {
+        self.storyboardName                         = ""
+        self.presentStyle                           = .push(false)
+        self.loadNavigationControllerFromStoryboard = false
+        self.navigationController                   = navigationController
         self.startAction                            = startAction
     }
     
