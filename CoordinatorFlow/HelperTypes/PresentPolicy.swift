@@ -50,7 +50,6 @@ public struct PresentPolicy {
         self.storyboardName                         = ""
         self.presentStyle                           = .push(false)
         self.loadNavigationControllerFromStoryboard = false
-        self.navigationController                   = navigationController
         self.startAction                            = startAction
         isAlreadyCreatedNavigationController        = true
     }

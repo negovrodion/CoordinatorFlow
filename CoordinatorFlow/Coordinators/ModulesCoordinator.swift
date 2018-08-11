@@ -30,16 +30,16 @@ public final class ModulesCoordinator: AbstractCoordinator {
     internal override func start() {
         super.start()
         
-        if presentPolicy.isAlreadyCreatedNavigationController {
-            navigationController = presentPolicy.startAction()
-            
-            return
-        }
-        
         guard let vc = presentPolicy.startAction() else {
             return
         }
 
+        if presentPolicy.isAlreadyCreatedNavigationController {
+            navigationController = vc as? UINavigationController
+            
+            return
+        }
+        
         switch presentPolicy.presentStyle {
         case .append:
             navigationController?.viewControllers.append(vc)
